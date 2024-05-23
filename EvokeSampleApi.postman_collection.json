@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "8e42bbed-c2a1-4d2d-be1b-fb7d2f4b9e41",
+		"name": "EvokeSampleApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34821409"
+	},
+	"item": [
+		{
+			"name": "Eovke_AddItems",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(pm.response.text()).to.include(\"Succesfully inserted into EvokeEmployee\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authroizationToken",
+						"value": "EvokePractice",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"20\",\r\n   \"name\":\"SRINIVAS G\",\r\n   \"location\": \"Evoke Technologies Ltd HYD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{base_url}}/Stage/AddItems",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Stage",
+						"AddItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evoke_Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authroizationToken",
+						"value": "EvokePractice",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{base_url}}/Stage/deleteItem/10",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Stage",
+						"deleteItem",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evoke_getItem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Person is Jane\", () => {\r",
+							"    const jsonData = pm.response.json().body;\r",
+							"    pm.expect(jsonData.id).to.eql(\"2\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authroizationToken",
+						"value": "EvokePractice",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{base_url}}/Stage/getItem/2",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Stage",
+						"getItem",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evoke_ListItems",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authroizationToken",
+						"value": "EvokePractice",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://{{base_url}}/Stage/ListItems",
+					"protocol": "https",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Stage",
+						"ListItems"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "6v5e8j519a.execute-api.us-west-2.amazonaws.com"
+		}
+	]
+}
